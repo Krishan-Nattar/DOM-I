@@ -2,6 +2,8 @@ const button = document.createElement("button");
 button.innerText = "Start Timer";
 
 const bodySelect = document.querySelector("body");
+const digits = document.querySelector('.digits');
+
 
 bodySelect.style.display = "flex";
 
@@ -34,12 +36,10 @@ function startTimer() {
   let intervalFunction = setInterval(function() {
     if (msTensCounter == 0) {
       if (msHundredsCounter == 0) {
-        
-
         if (secondCounter == 0) {
           seconddTens.innerText = tensCounter;
-          
-        clearInterval(intervalFunction);
+          digits.style.color = "red";
+          clearInterval(intervalFunction);
         }
 
         secondOnes.innerText = secondCounter;
@@ -63,7 +63,6 @@ function startTimer() {
 
     if (msTensCounter == 10) {
       msTensCounter = 0;
-
     }
   }, 10);
 }
