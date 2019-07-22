@@ -1,4 +1,4 @@
-function buttonCreator(buttonText) {
+function buttonCreator(buttonText, color, cb) {
   const button = document.createElement("button");
   button.style.marginTop = "50px";
   button.style.backgroundColor = "peach";
@@ -7,21 +7,21 @@ function buttonCreator(buttonText) {
   button.style.height = "50px";
   button.style.fontSize = "1.5rem";
   button.innerText = buttonText;
+  button.style.color = color;
+  button.addEventListener("click", cb);
+  button.style.outline = "none";
   return button;
 }
 
-const button = buttonCreator("Start Timer");
+const button = buttonCreator("Start Timer", "green", startTimer);
 
-const resetButton = buttonCreator("Reset Timer");
+const resetButton = buttonCreator("Reset Timer", "red", resetTimer);
 
 const bodySelect = document.querySelector("body");
 const digits = document.querySelector(".digits");
 
 bodySelect.style.display = "flex";
 bodySelect.style.flexDirection = "column";
-
-resetButton.addEventListener("click", resetTimer);
-button.addEventListener("click", startTimer);
 
 bodySelect.appendChild(button);
 bodySelect.appendChild(resetButton);
@@ -30,8 +30,6 @@ const msTens = document.querySelector("#msTens");
 const msHundreds = document.querySelector("#msHundreds");
 const secondOnes = document.querySelector("#secondOnes");
 const seconddTens = document.querySelector("#secondTens");
-
-// console.log(msTens);
 
 let msTensCounter = 1;
 let msHundredsCounter = 1;
