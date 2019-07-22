@@ -47,10 +47,12 @@ ctaImg.setAttribute('src', siteContent['cta']['img-src']);
 let middleImg = document.getElementById('middle-img');
 middleImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 
+let navTag = document.querySelector('nav');
 
 let anchorTags = document.querySelectorAll('a');
 anchorTags.forEach(function(item, index, array){
   item.innerText=siteContent['nav'][`nav-item-${index + 1}`];
+  item.style.color="green";
 });
 
 const ctaText = document.querySelector(".cta-text h1");
