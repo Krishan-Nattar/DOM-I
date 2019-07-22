@@ -75,8 +75,20 @@ ctaArray.splice(3,0, "\r\n");
 
 ctaText.innerText = ctaArray.join(" ");
 
+const allParagraphs = document.querySelectorAll('p');
+
 const ctaButton = document.querySelector(".cta-text button");
+
+const cta = document.querySelector('.cta-text');
+const clickButton = document.createElement('button');
+clickButton.innerText = "Click to turn red";
+cta.appendChild(clickButton);
+
 ctaButton.innerText = siteContent['cta']['button'];
+
+clickButton.addEventListener('click', (event)=>{
+  ctaText.style.color = "red";
+});
 
 const topH4 = document.querySelectorAll(".top-content .text-content h4");
 
