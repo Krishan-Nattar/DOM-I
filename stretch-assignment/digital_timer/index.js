@@ -1,23 +1,30 @@
-const button = document.createElement("button");
-button.innerText = "Start Timer";
+function buttonCreator(buttonText) {
+  const button = document.createElement("button");
+  button.style.marginTop = "50px";
+  button.style.backgroundColor = "peach";
+  button.style.border = "none";
+  button.style.width = "200px";
+  button.style.height = "50px";
+  button.style.fontSize = "1.5rem";
+  button.innerText = buttonText;
+  return button;
+}
+
+const button = buttonCreator("Start Timer");
+
+const resetButton = buttonCreator("Reset Timer");
 
 const bodySelect = document.querySelector("body");
-const digits = document.querySelector('.digits');
-
+const digits = document.querySelector(".digits");
 
 bodySelect.style.display = "flex";
-
 bodySelect.style.flexDirection = "column";
 
-button.style.marginTop = "50px";
-button.style.backgroundColor = "peach";
-button.style.border = "none";
-button.style.width = "200px";
-button.style.height = "50px";
-button.style.fontSize = "1.5rem";
+resetButton.addEventListener("click", resetTimer);
 button.addEventListener("click", startTimer);
 
 bodySelect.appendChild(button);
+bodySelect.appendChild(resetButton);
 
 const msTens = document.querySelector("#msTens");
 const msHundreds = document.querySelector("#msHundreds");
@@ -32,13 +39,17 @@ let msHundredsCounter = 1;
 let secondCounter = 1;
 let tensCounter = 1;
 
+let intervalFunction;
+
 function startTimer() {
-  let intervalFunction = setInterval(function() {
+  button.removeEventListener("click", startTimer);
+  intervalFunction = setInterval(function() {
     if (msTensCounter == 0) {
       if (msHundredsCounter == 0) {
         if (secondCounter == 0) {
           seconddTens.innerText = tensCounter;
           digits.style.color = "red";
+
           clearInterval(intervalFunction);
         }
 
@@ -65,4 +76,14 @@ function startTimer() {
       msTensCounter = 0;
     }
   }, 10);
+}
+
+function resetTimer() {
+  clearInterval(intervalFunction);
+  msTens.innerText = "-";
+  msHundreds.innerText = "-";
+  secondOnes.innerText = "-";
+  seconddTens.innerText = "-";
+  digits.style.color = "black";
+  button.addEventListener("click", startTimer);
 }
