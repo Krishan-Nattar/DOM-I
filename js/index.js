@@ -55,6 +55,17 @@ anchorTags.forEach(function(item, index, array){
   item.style.color="green";
 });
 
+const newAnchor = document.createElement('a');
+const newAnchor2 = document.createElement('a');
+
+newAnchor.textContent = "Blog";
+newAnchor2.textContent = "Portfolio";
+newAnchor.style.color="green";
+newAnchor2.style.color="green";
+
+navTag.appendChild(newAnchor);
+navTag.prepend(newAnchor2);
+
 const ctaText = document.querySelector(".cta-text h1");
 
 let ctaArray = siteContent['cta']['h1'].split(" ");
