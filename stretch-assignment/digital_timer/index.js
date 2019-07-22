@@ -83,5 +83,10 @@ function resetTimer() {
   secondOnes.innerText = "-";
   seconddTens.innerText = "-";
   digits.style.color = "black";
+  msTensCounter = 1;
+  msHundredsCounter = 1;
+
+  secondCounter = 1;
+  tensCounter = 1;
   button.addEventListener("click", startTimer);
 }
